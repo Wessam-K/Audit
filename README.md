@@ -17,6 +17,7 @@
 | [**SYNC-AND-FLOWS.md**](SYNC-AND-FLOWS.md) | How data moves: sync, sales, inventory, payments, licensing flows |
 | [**REMEDIATION_LOG.md**](REMEDIATION_LOG.md) | All security fixes applied with dates and verification |
 | [**PRODUCTION_READINESS_BACKLOG.md**](PRODUCTION_READINESS_BACKLOG.md) | Production readiness items (P0-P2) |
+| [**E2E-API-TEST-RESULTS.md**](e2e-results/E2E-API-TEST-RESULTS.md) | Live E2E API test results — 44 tests, 93% pass rate |
 | [**Architecture Docs**](architecture/) | Per-system architecture documentation |
 | [**Diagrams**](diagrams/) | Architecture and flow diagrams |
 | **Audit Reports** | See sections below |
@@ -41,6 +42,7 @@ The WK-HUB platform is a comprehensive enterprise software suite consisting of t
 | Licensed Modules | 51 | — | — | **51** |
 | Prisma Schema Lines | 3,772 | ~816 | 631 | **~5,219** |
 | Security Middleware | 14 | 5 | 4 | **23** |
+| E2E API Tests | 22 | 7 | 15 | **44 (93% pass)** |
 
 ---
 
