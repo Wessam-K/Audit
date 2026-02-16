@@ -48,3 +48,30 @@
 | 2026-02-16 S2-21 | Added take/limit to 9 unbounded findMany queries | P1-04: Safety caps on reports, exports, user lists | Build clean |
 | 2026-02-16 S2-22 | Created DEPLOYMENT_ON_PREM.md runbook | Production deployment guide for LAN/on-prem | Documentation |
 | 2026-02-16 S2-23 | Created RUNBOOK_OFFLINE_BRANCH.md | Offline branch operations guide for operators | Documentation |
+
+## Session 4 — 2026-02-16 (Production Readiness Implementation)
+
+| Timestamp | Change | Reason | Verification |
+|-----------|--------|--------|-------------|
+| 2026-02-16 S4-01 | GlobalContextBar moved to global layout | Branch selector was dashboard-only; now visible on all pages when branches exist (B-001) | Build clean |
+| 2026-02-16 S4-02 | License fallback PLAN_FEATURES synced | TRIAL had only `['pos','inventory']` — expanded all 4 tiers to match seed-canonical (L-003) | Build clean |
+| 2026-02-16 S4-03 | License fallback PLAN_LIMITS corrected | TRIAL users 5→3, products 500→100, transactions 1000→500 to match seed (L-003) | Build clean |
+| 2026-02-16 S4-04 | Added WARN logging on license fallback paths | Silent fallback made license issues invisible in production (L-003) | Build clean |
+| 2026-02-16 S4-05 | Edge Agent: wired recoverInFlight() at startup | Function existed but was never called — orphaned in-flight entries would stay stuck (EA-011) | Code review |
+| 2026-02-16 S4-06 | Edge Agent: license gate on recordEvent() | Events accepted even after license expiry — now rejects with error (EA) | Code review |
+| 2026-02-16 S4-07 | Edge Agent: SHA-256 checksum validation on inbox | Incoming packets had no integrity verification — now rejects hash mismatches (EA) | Code review |
+| 2026-02-16 S4-08 | Edge Agent: removed 4 dead dependencies | electron-store, axios, uuid, node-cron never imported but declared (EA-010) | package.json diff |
+| 2026-02-16 S4-09 | Edge Agent: added exports to barrel index | recoverInFlight, getDeadLetterEntries, retryDeadLetter not exported from sync/ | Code review |
+| 2026-02-16 S4-10 | Deleted duplicate seed-modules.ts | Two seed files (seed-modules.ts + seed-canonical.ts) caused confusion; canonical is authoritative | File deleted, no refs |
+| 2026-02-16 S4-11 | Zod schemas: shift.schema.ts | openShiftSchema, closeShiftSchema, zReportSchema — money validation (P1-05) | Build clean |
+| 2026-02-16 S4-12 | Zod schemas: loyalty.schema.ts | earnPointsSchema, redeemPointsSchema, adjustPointsSchema, loyaltyTierSchema (P1-05) | Build clean |
+| 2026-02-16 S4-13 | Zod schemas: stocktaking.schema.ts | createStocktakingSchema, addStocktakingItemSchema, bulkStocktakingItemSchema (P1-05) | Build clean |
+| 2026-02-16 S4-14 | Zod schemas: settings.schema.ts | updateSettingsSchema, lockoutPolicySchema, sessionSettingsSchema, taxRateSchema (P1-05) | Build clean |
+| 2026-02-16 S4-15 | Zod schemas: webhook.schema.ts | createWebhookSchema, updateWebhookSchema — HTTPS + secret length (P1-05) | Build clean |
+| 2026-02-16 S4-16 | Wired validate() to 18 route endpoints | shift (3), loyalty (4), stocktaking (4), settings (5), webhook (2) routes (P1-05) | Build clean |
+| 2026-02-16 S4-17 | Added 8 Tenant relations to Prisma schema | StockAlert, SystemSetting, SavedReport, ApiKey, AccessRule, AccessPolicy, UserAttribute, ActivityLog (P2-01) | Prisma generate OK |
+| 2026-02-16 S4-18 | Added onDelete: Cascade to 8 orphan models | Tenant deletion now cascades to all 8 models (P2-01) | Prisma generate OK |
+| 2026-02-16 S4-19 | rbac.service.ts: timer tracking with Map | setTimeout ref was never stored — potential memory leak on shutdown (P2-02) | Build clean |
+| 2026-02-16 S4-20 | scheduled-report.routes.ts: eliminated fire-and-forget setTimeout | Status could stay SRL_RUNNING forever on timeout error (P2-02) | Build clean |
+| 2026-02-16 S4-21 | Event listener: onSaleCompleted creates Notification | Was audit-log-only stub — now creates user notification (P1-03) | Build clean |
+| 2026-02-16 S4-22 | Event listener: onStockAdjusted creates StockAlert | Was audit-log-only stub — now creates low stock alerts with severity tiers (P1-03) | Build clean |
