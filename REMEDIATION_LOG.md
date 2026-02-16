@@ -75,3 +75,8 @@
 | 2026-02-16 S4-20 | scheduled-report.routes.ts: eliminated fire-and-forget setTimeout | Status could stay SRL_RUNNING forever on timeout error (P2-02) | Build clean |
 | 2026-02-16 S4-21 | Event listener: onSaleCompleted creates Notification | Was audit-log-only stub — now creates user notification (P1-03) | Build clean |
 | 2026-02-16 S4-22 | Event listener: onStockAdjusted creates StockAlert | Was audit-log-only stub — now creates low stock alerts with severity tiers (P1-03) | Build clean |
+| 2026-02-16 S4-23 | Created test-branch-isolation.ps1 | Local test script for multi-branch scoping verification (P2-04) | Script executes |
+| 2026-02-16 S4-24 | Created test-validation.ps1 | Local test script for Zod validation rejection testing (P2-04) | Script executes |
+| 2026-02-16 S4-25 | Created test-license-enforcement.ps1 | Local test script for license gating and module access (P2-04) | Script executes |
+| 2026-02-16 S4-26 | Created test-schema-integrity.ps1 | Local test script for Prisma relations, timers, event listeners (P2-04) | 37/37 pass |
+| 2026-02-16 S4-27 | Created test-edge-agent.ps1 | Local test script for Edge Agent source verification (P2-04) | 24/24 pass |

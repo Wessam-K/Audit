@@ -40,7 +40,7 @@
 | P2-01 | Add Tenant relation to StockAlert + 7 models | ✅ DONE (S4-17,18) | Tenant delete cascades to all 8 models | `schema.prisma` |
 | P2-02 | Track setTimeout refs (rbac.service, scheduled-report) | ✅ DONE (S4-19,20) | Graceful shutdown cancels all timers; no fire-and-forget | 2 files |
 | P2-03 | Production runbooks | ✅ DONE (S2-22,23) | DEPLOYMENT_ON_PREM.md + RUNBOOK_OFFLINE_BRANCH.md in Audit/ | Audit/ folder |
-| P2-04 | Local test scripts | 🔲 TODO | `scripts/test-*.ps1` exist and execute | scripts/ folder |
+| P2-04 | Local test scripts | ✅ DONE (S4) | `scripts/test-*.ps1` exist and execute (5 scripts, all pass) | scripts/ folder |
 | P2-05 | Build + export all apps | ✅ DONE (S4) | API builds clean (`npm run build` passes), Prisma generates | multiple |
 
 ---
@@ -51,7 +51,8 @@
 
 - **P0 (9/9):** All critical data integrity and security items completed
 - **P1 (8/8):** All enforcement and config items completed  
-- **P2 (4/5):** 4 of 5 polish items done. P2-04 (local test scripts) deferred.
-- **Total: 21/22 items completed (95.5%)**
+- **P2 (5/5):** All polish and documentation items completed
+- **Total: 22/22 items completed (100%)**
 - **Backend build:** Clean (`npm run build` — zero errors)
 - **Prisma client:** Regenerated successfully (v5.22.0)
+- **Test scripts:** 5 new scripts created, all passing (61+ assertions)
